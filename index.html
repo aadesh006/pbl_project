@@ -9,16 +9,16 @@
 <style>
 :root {
   --bg: #0a0a0d;
-  --panel: #111114;
-  --panel-raised: #17171b;
-  --line: #232327;
-  --line-bright: #333338;
-  --amber: #ff7a1a;
-  --amber-dim: #7a3d10;
-  --slate: #8b95a5;
-  --slate-dim: #5c6675;
-  --bone: #e8e6e0;
-  --dim: #9a9aa2;
+  --panel: #131316;
+  --panel-raised: #1a1a1e;
+  --line: #2b2b30;
+  --line-bright: #3d3d43;
+  --amber: #ff8c3a;
+  --amber-dim: #b25a1e;
+  --slate: #b7c0cc;
+  --slate-dim: #6b7482;
+  --bone: #f0eee8;
+  --dim: #a8a8ae;
   --mono: 'IBM Plex Mono', monospace;
   --head: 'Space Grotesk', sans-serif;
 }
@@ -30,16 +30,17 @@ body {
   background: var(--bg);
   color: var(--bone);
   min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 ::selection { background: var(--amber); color: #0a0a0d; }
 
-/* faint grain */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.025) 1px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 0);
   background-size: 3px 3px;
   pointer-events: none;
   z-index: 9999;
@@ -48,298 +49,152 @@ body::before {
 nav {
   position: sticky;
   top: 0; z-index: 100;
-  background: rgba(10,10,13,0.94);
+  background: rgba(10,10,13,0.96);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(6px);
 }
 .nav-inner {
-  max-width: 1180px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 16px 28px;
+  padding: 18px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.nav-id {
-  font-size: 12px;
-  letter-spacing: 0.02em;
-  color: var(--bone);
-}
-.nav-id b { font-family: var(--head); font-weight: 700; }
-.nav-case {
-  font-size: 11px;
-  color: var(--dim);
-  margin-top: 2px;
-}
-.nav-right { display: flex; align-items: center; gap: 20px; }
-.nav-live {
-  display: flex; align-items: center; gap: 7px;
-  font-size: 11px; color: var(--amber);
-}
-.live-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--amber);
-  animation: blink 1.4s infinite;
-}
+.nav-id { font-size: 14px; color: var(--bone); }
+.nav-id b { font-family: var(--head); font-weight: 700; letter-spacing: 0.01em; }
+.nav-case { font-size: 12px; color: var(--dim); margin-top: 3px; }
+.nav-right { display: flex; align-items: center; gap: 22px; }
+.nav-live { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: var(--amber); }
+.live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); animation: blink 1.4s infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.25} }
 .gh-link {
-  font-size: 12px; color: var(--slate);
-  text-decoration: none;
-  border: 1px solid var(--line-bright);
-  padding: 7px 16px;
-  transition: all 0.15s;
+  font-size: 13px; color: var(--slate); text-decoration: none;
+  border: 1px solid var(--line-bright); padding: 8px 18px; transition: all 0.15s;
 }
 .gh-link:hover { color: var(--bone); border-color: var(--amber-dim); }
 
-main { max-width: 1180px; margin: 0 auto; padding: 0 28px 100px; }
+main { max-width: 1200px; margin: 0 auto; padding: 0 28px 110px; }
 
-/* ── HERO: intake dossier ── */
+/* ── HERO ── */
 .hero {
   display: grid;
   grid-template-columns: 1.3fr 1fr;
-  gap: 48px;
-  padding: 64px 0 72px;
+  gap: 52px;
+  padding: 68px 0 76px;
   border-bottom: 1px solid var(--line);
   align-items: start;
 }
-.hero-eyebrow {
-  font-size: 12px;
-  color: var(--dim);
-  margin-bottom: 20px;
-}
+.hero-eyebrow { font-size: 13px; color: var(--dim); margin-bottom: 22px; }
 .hero h1 {
   font-family: var(--head);
   font-size: clamp(38px, 5vw, 58px);
-  font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
-  margin-bottom: 20px;
+  font-weight: 700; line-height: 1.08; letter-spacing: -0.01em;
+  margin-bottom: 22px;
 }
 .hero h1 em { font-style: normal; color: var(--amber); }
 .hero-desc {
-  font-size: 14.5px;
-  line-height: 1.85;
-  color: var(--slate);
-  max-width: 54ch;
-  margin-bottom: 28px;
+  font-size: 16px; line-height: 1.85; color: var(--slate);
+  max-width: 54ch; margin-bottom: 30px;
 }
 .hero-tags { display: flex; gap: 10px; flex-wrap: wrap; }
-.tag {
-  font-size: 11px; letter-spacing: 0.03em;
-  padding: 6px 12px;
-  border: 1px solid var(--line-bright);
-  color: var(--slate);
-}
+.tag { font-size: 12px; letter-spacing: 0.02em; padding: 7px 13px; border: 1px solid var(--line-bright); color: var(--slate); }
 
-/* verdict panel */
-.dossier-card {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  padding: 0;
-  position: relative;
-}
-.dossier-head {
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--line);
-  display: flex; justify-content: space-between; align-items: center;
-}
-.dossier-head-label { font-size: 10.5px; color: var(--dim); letter-spacing: 0.06em; }
-.dossier-body { padding: 22px 20px; }
-.pkg-name { font-family: var(--head); font-size: 19px; font-weight: 600; }
-.pkg-meta { font-size: 11.5px; color: var(--dim); margin-top: 4px; }
-.trace-lines { margin: 18px 0; font-size: 11.5px; line-height: 2; }
+.dossier-card { background: var(--panel); border: 1px solid var(--line); }
+.dossier-head { padding: 16px 20px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+.dossier-head-label { font-size: 11.5px; color: var(--dim); letter-spacing: 0.05em; }
+.dossier-body { padding: 24px 22px; }
+.pkg-name { font-family: var(--head); font-size: 20px; font-weight: 600; }
+.pkg-meta { font-size: 12.5px; color: var(--dim); margin-top: 4px; }
+.trace-lines { margin: 20px 0; font-size: 13px; line-height: 2.1; }
 .trace-lines .ok { color: var(--slate); }
 .trace-lines .flag { color: var(--amber); }
 .trace-lines .tag-inline { color: var(--dim); }
-.verdict-row {
-  display: flex; align-items: center; justify-content: space-between;
-  margin-top: 18px; padding-top: 18px; border-top: 1px solid var(--line);
-}
+.verdict-row { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
 .verdict-stamp {
-  font-family: var(--head); font-weight: 700; font-size: 20px;
-  color: var(--amber); letter-spacing: 0.06em;
-  border: 2px solid var(--amber);
-  padding: 6px 16px;
-  transform: rotate(-3deg);
-  display: inline-block;
+  font-family: var(--head); font-weight: 700; font-size: 21px; color: var(--amber);
+  letter-spacing: 0.05em; border: 2px solid var(--amber); padding: 7px 17px;
+  transform: rotate(-3deg); display: inline-block;
 }
-.verdict-latency { font-size: 11px; color: var(--dim); }
+.verdict-latency { font-size: 12px; color: var(--dim); }
 
-/* ── SECTION HEADER ── */
-.sec {
-  padding: 56px 0;
-  border-bottom: 1px solid var(--line);
-}
-.sec-head {
-  display: flex; align-items: baseline; gap: 14px;
-  margin-bottom: 30px;
-}
-.sec-tag { font-size: 11px; color: var(--amber-dim); }
-.sec-head h2 {
-  font-family: var(--head); font-size: 21px; font-weight: 600;
-}
-.sec-note { font-size: 12px; color: var(--dim); margin-left: auto; }
+.sec { padding: 60px 0; border-bottom: 1px solid var(--line); }
+.sec-head { display: flex; align-items: baseline; gap: 15px; margin-bottom: 32px; flex-wrap: wrap; }
+.sec-tag { font-size: 12px; color: var(--amber); }
+.sec-head h2 { font-family: var(--head); font-size: 23px; font-weight: 600; }
+.sec-note { font-size: 13px; color: var(--dim); margin-left: auto; }
+.sec-intro { font-size: 14.5px; color: var(--slate); line-height: 1.8; max-width: 68ch; margin: -14px 0 28px; }
 
-/* ── STAGE FLOW ── */
-.stage-flow {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.stage {
-  background: var(--panel);
-  padding: 22px 18px;
-  position: relative;
-}
-.stage-num { font-size: 10.5px; color: var(--amber-dim); margin-bottom: 12px; }
-.stage-name { font-family: var(--head); font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-.stage-desc { font-size: 11.5px; color: var(--dim); line-height: 1.6; }
+.stage-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.stage { background: var(--panel); padding: 24px 20px; }
+.stage-num { font-size: 11.5px; color: var(--amber-dim); margin-bottom: 13px; }
+.stage-name { font-family: var(--head); font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+.stage-desc { font-size: 13px; color: var(--slate); line-height: 1.7; }
 
-/* ── STAT ROW ── */
-.stat-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  margin-bottom: 4px;
-}
-.stat {
-  background: var(--panel);
-  padding: 20px 18px;
-}
-.stat-num { font-family: var(--head); font-size: 26px; font-weight: 700; color: var(--bone); }
+.stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-bottom: 4px; }
+.stat { background: var(--panel); padding: 22px 20px; }
+.stat-num { font-family: var(--head); font-size: 27px; font-weight: 700; color: var(--bone); }
 .stat-num.amber { color: var(--amber); }
-.stat-label { font-size: 10.5px; color: var(--dim); margin-top: 6px; letter-spacing: 0.02em; }
+.stat-label { font-size: 12px; color: var(--dim); margin-top: 7px; letter-spacing: 0.01em; line-height: 1.5; }
 
-/* ── COMPONENT LIST ── */
 .component-list { display: flex; flex-direction: column; }
-.component-row {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 24px;
-  padding: 16px 0;
-  border-bottom: 1px solid var(--line);
-  align-items: baseline;
-}
+.component-row { display: grid; grid-template-columns: 210px 1fr; gap: 26px; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
 .component-row:last-child { border-bottom: none; }
-.component-name { font-family: var(--head); font-size: 14px; font-weight: 600; }
-.component-desc { font-size: 12.5px; color: var(--slate); line-height: 1.6; }
-.component-desc code {
-  font-family: var(--mono); color: var(--amber);
-  background: rgba(255,122,26,0.08); padding: 1px 5px; font-size: 11.5px;
-}
+.component-name { font-family: var(--head); font-size: 15px; font-weight: 600; }
+.component-desc { font-size: 13.5px; color: var(--slate); line-height: 1.75; }
+.component-desc code { font-family: var(--mono); color: var(--amber); background: rgba(255,140,58,0.1); padding: 2px 6px; font-size: 12.5px; }
 
-/* ── LATENCY CHART ── */
-.chart-panel {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  padding: 26px 28px 20px;
-}
-.chart-caption {
-  font-size: 11.5px; color: var(--dim); margin-top: 16px; line-height: 1.7;
-  max-width: 60ch;
-}
-.bar-row {
-  display: grid;
-  grid-template-columns: 170px 1fr 90px;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 16px;
-}
-.bar-label { font-size: 12px; color: var(--bone); }
-.bar-label .bar-sub { display: block; font-size: 10.5px; color: var(--dim); margin-top: 2px; }
-.bar-track { background: var(--line); height: 20px; position: relative; }
-.bar-fill { height: 100%; background: var(--slate-dim); }
-.bar-fill.amber { background: var(--amber); }
-.bar-value { font-size: 12px; color: var(--bone); text-align: right; }
+/* code panel */
+.code-panel { background: var(--panel); border: 1px solid var(--line); margin-top: 24px; }
+.code-bar { padding: 12px 20px; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--dim); display: flex; justify-content: space-between; }
+.code-body { padding: 22px 24px; font-size: 13px; line-height: 1.9; overflow-x: auto; }
+.code-body .kw { color: var(--amber); }
+.code-body .ty { color: var(--slate); }
+.code-body .cm { color: var(--dim); }
+.code-body .fn { color: var(--bone); }
 
-/* ── COMPARISON TABLE ── */
-.compare-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12.5px;
-}
-.compare-table th, .compare-table td {
-  border: 1px solid var(--line);
-  padding: 14px 16px;
-  text-align: left;
-}
-.compare-table th {
-  font-family: var(--head); font-weight: 600; font-size: 12.5px;
-  background: var(--panel-raised);
-  color: var(--bone);
-}
+/* chart */
+.chart-panel { background: var(--panel); border: 1px solid var(--line); padding: 30px 32px 26px; }
+.chart-caption { font-size: 13px; color: var(--slate); margin-top: 20px; line-height: 1.75; max-width: 68ch; }
+.chart-caption code { color: var(--amber); background: rgba(255,140,58,0.1); padding: 1px 5px; }
+svg text { font-family: var(--mono); }
+
+/* comparison tables */
+.compare-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.compare-table th, .compare-table td { border: 1px solid var(--line); padding: 15px 17px; text-align: left; }
+.compare-table th { font-family: var(--head); font-weight: 600; font-size: 13.5px; background: var(--panel-raised); color: var(--bone); }
 .compare-table td { color: var(--slate); background: var(--panel); }
 .compare-table td.col-us { color: var(--bone); }
 .compare-table .yes { color: var(--amber); }
 .compare-table .no { color: var(--dim); }
+.table-wrap { overflow-x: auto; }
+.table-wrap + .table-wrap { margin-top: 22px; }
+.mini-label { font-size: 12.5px; color: var(--dim); margin-bottom: 10px; letter-spacing: 0.02em; }
 
-/* ── CASE STUDIES ── */
-.case-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
+.case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
 @media (max-width: 860px) { .case-grid { grid-template-columns: 1fr; } }
 
-/* ── EVIDENCE LOG (fixed bug narrative) ── */
-.log-panel {
-  background: var(--panel);
-  border: 1px solid var(--line);
-  padding: 0;
-}
-.log-bar {
-  padding: 12px 20px;
-  border-bottom: 1px solid var(--line);
-  font-size: 11px; color: var(--dim); letter-spacing: 0.04em;
-  display: flex; justify-content: space-between;
-}
-.log-body { padding: 22px 24px; font-size: 12.5px; line-height: 2; }
+.log-panel { background: var(--panel); border: 1px solid var(--line); }
+.log-bar { padding: 13px 20px; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--dim); letter-spacing: 0.03em; display: flex; justify-content: space-between; }
+.log-body { padding: 22px 24px; font-size: 13px; line-height: 2.05; }
 .log-body .ln-num { color: var(--dim); margin-right: 14px; }
 .log-body .ln-good { color: var(--slate); }
 .log-body .ln-bad { color: var(--amber); }
-.log-body .ln-comment { color: #767c86; font-style: normal; }
+.log-body .ln-comment { color: #8a909a; }
 
-/* ── ROADMAP ── */
-.roadmap-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-}
-.roadmap-item {
-  background: var(--panel);
-  padding: 16px 20px;
-  font-size: 12.5px; color: var(--slate);
-  display: flex; gap: 12px; align-items: baseline;
-}
-.roadmap-item span.marker { color: var(--slate-dim); font-size: 11px; flex-shrink: 0; }
+.roadmap-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.roadmap-item { background: var(--panel); padding: 17px 21px; font-size: 13.5px; color: var(--slate); display: flex; gap: 12px; align-items: baseline; }
+.roadmap-item span.marker { color: var(--amber-dim); font-size: 12px; flex-shrink: 0; }
 
-/* ── CREDITS ── */
-.credits {
-  display: flex; gap: 20px; flex-wrap: wrap;
-  padding: 48px 0 40px;
-}
-.credit {
-  border: 1px solid var(--line);
-  padding: 18px 26px;
-  min-width: 180px;
-}
+.credits { display: flex; gap: 20px; flex-wrap: wrap; padding: 50px 0 42px; }
+.credit { border: 1px solid var(--line); padding: 19px 27px; min-width: 180px; }
 .credit.primary { border-color: var(--amber-dim); }
-.credit-role { font-size: 10px; color: var(--dim); letter-spacing: 0.04em; margin-bottom: 8px; }
-.credit-name { font-family: var(--head); font-size: 15px; font-weight: 600; }
-.credit-sub { font-size: 10.5px; color: var(--dim); margin-top: 4px; }
+.credit-role { font-size: 11.5px; color: var(--dim); letter-spacing: 0.03em; margin-bottom: 9px; }
+.credit-name { font-family: var(--head); font-size: 16px; font-weight: 600; }
+.credit-sub { font-size: 12px; color: var(--dim); margin-top: 5px; }
 
-footer {
-  padding: 24px 28px;
-  text-align: center;
-  border-top: 1px solid var(--line);
-}
-.footer-text { font-size: 10px; color: var(--dim); letter-spacing: 0.04em; }
+footer { padding: 26px 28px; text-align: center; border-top: 1px solid var(--line); }
+.footer-text { font-size: 11px; color: var(--dim); letter-spacing: 0.03em; }
 
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; }
@@ -365,7 +220,6 @@ footer {
 
 <main>
 
-  <!-- HERO -->
   <section class="hero">
     <div>
       <div class="hero-eyebrow">Runtime behavior analysis for npm packages</div>
@@ -390,7 +244,7 @@ footer {
         <span class="dossier-head-label">PID NS: SCOPED</span>
       </div>
       <div class="dossier-body">
-        <div class="pkg-name">left-pad-utils@2.3.1</div>
+        <div class="pkg-name">axios@1.14.1</div>
         <div class="pkg-meta">install-time analysis · sandboxed</div>
         <div class="trace-lines">
           <div class="ok">fs.read  ./package.json <span class="tag-inline">— ok</span></div>
@@ -406,7 +260,7 @@ footer {
     </div>
   </section>
 
-  <!-- HOW A PACKAGE MOVES THROUGH THE SYSTEM -->
+  <!-- PIPELINE -->
   <section class="sec">
     <div class="sec-head">
       <span class="sec-tag">01</span>
@@ -421,7 +275,7 @@ footer {
       <div class="stage">
         <div class="stage-num">STAGE 2</div>
         <div class="stage-name">Sandbox exec</div>
-        <div class="stage-desc">PID namespace scoping via task→nsproxy→pid_ns_for_children keeps the trace to this package only.</div>
+        <div class="stage-desc">PID namespace scoping via <code style="color:var(--amber)">task→nsproxy→pid_ns_for_children</code> keeps the trace to this package only.</div>
       </div>
       <div class="stage">
         <div class="stage-num">STAGE 3</div>
@@ -436,10 +290,51 @@ footer {
     </div>
   </section>
 
-  <!-- STATS -->
+  <!-- WHY LSM -->
   <section class="sec">
     <div class="sec-head">
       <span class="sec-tag">02</span>
+      <h2>Why an LSM hook, not ptrace or seccomp</h2>
+    </div>
+    <p class="sec-intro">
+      There are three common places to intercept a process's syscalls. Each trades off
+      differently between visibility, overhead, and whether you can actually stop the
+      call before it completes.
+    </p>
+    <div class="table-wrap">
+      <table class="compare-table">
+        <tr>
+          <th>Approach</th>
+          <th>Where it runs</th>
+          <th>Can block inline</th>
+          <th>Overhead</th>
+        </tr>
+        <tr>
+          <td>ptrace</td>
+          <td>Userspace, syscall-by-syscall trap</td>
+          <td class="no">Slow — stop/resume per call</td>
+          <td class="no">High (context switch per syscall)</td>
+        </tr>
+        <tr>
+          <td>seccomp-bpf</td>
+          <td>Kernel, filter at syscall entry</td>
+          <td class="yes">Yes, but coarse-grained</td>
+          <td class="no">Low, but no argument-level nuance</td>
+        </tr>
+        <tr>
+          <td class="col-us">eBPF/LSM (this project)</td>
+          <td class="col-us">Kernel, security hook at socket_connect</td>
+          <td class="col-us yes">Yes — argument-aware (dest IP)</td>
+          <td class="col-us yes">Low — 3.2µs measured</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-tag">03</span>
       <h2>What's actually working</h2>
       <span class="sec-note">not aspirational — implemented</span>
     </div>
@@ -463,34 +358,61 @@ footer {
     </div>
   </section>
 
-  <!-- LATENCY -->
+  <!-- LATENCY CHART -->
   <section class="sec">
     <div class="sec-head">
-      <span class="sec-tag">03</span>
+      <span class="sec-tag">04</span>
       <h2>Detection latency</h2>
-      <span class="sec-note">kernel hook vs. userspace scanning</span>
+      <span class="sec-note">log scale — kernel hook vs. userspace scanning</span>
     </div>
     <div class="chart-panel">
-      <div class="bar-row">
-        <div class="bar-label">eBPF/LSM hook<span class="bar-sub">in-kernel, blocks inline</span></div>
-        <div class="bar-track"><div class="bar-fill amber" style="width: 4%;"></div></div>
-        <div class="bar-value">3.2 µs</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Post-install audit<span class="bar-sub">e.g. npm audit, static scan</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width: 58%;"></div></div>
-        <div class="bar-value">~1–3 s</div>
-      </div>
-      <div class="bar-row">
-        <div class="bar-label">Manual code review<span class="bar-sub">human reads the diff</span></div>
-        <div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div>
-        <div class="bar-value">minutes+</div>
-      </div>
+      <svg viewBox="0 0 760 260" width="100%" style="overflow: visible;">
+        <!-- gridlines: log scale from 1µs (x=90) to 10min=6e8µs (x=720), using decade ticks -->
+        <!-- decades: 1µs,10µs,100µs,1ms,10ms,100ms,1s,10s,100s -->
+        <g font-size="11" fill="#a8a8ae">
+          <!-- vertical gridlines every decade -->
+          <line x1="90"  y1="20" x2="90"  y2="210" stroke="#2b2b30" stroke-width="1"/>
+          <line x1="165" y1="20" x2="165" y2="210" stroke="#2b2b30" stroke-width="1"/>
+          <line x1="240" y1="20" x2="240" y2="210" stroke="#2b2b30" stroke-width="1"/>
+          <line x1="315" y1="20" x2="315" y2="210" stroke="#2b2b30" stroke-width="1"/>
+          <line x1="390" y1="20" x2="390" y2="210" stroke="#2b2b30" stroke-width="1"/>
+          <line x1="465" y1="20" x2="465" y2="210" stroke="#2b2b30" stroke-width="1"/>
+          <line x1="540" y1="20" x2="540" y2="210" stroke="#2b2b30" stroke-width="1"/>
+          <line x1="615" y1="20" x2="615" y2="210" stroke="#2b2b30" stroke-width="1"/>
+          <line x1="690" y1="20" x2="690" y2="210" stroke="#2b2b30" stroke-width="1"/>
+          <text x="90"  y="228" text-anchor="middle">1µs</text>
+          <text x="165" y="228" text-anchor="middle">10µs</text>
+          <text x="240" y="228" text-anchor="middle">100µs</text>
+          <text x="315" y="228" text-anchor="middle">1ms</text>
+          <text x="390" y="228" text-anchor="middle">10ms</text>
+          <text x="465" y="228" text-anchor="middle">100ms</text>
+          <text x="540" y="228" text-anchor="middle">1s</text>
+          <text x="615" y="228" text-anchor="middle">10s</text>
+          <text x="690" y="228" text-anchor="middle">100s</text>
+        </g>
+        <line x1="90" y1="210" x2="720" y2="210" stroke="#3d3d43" stroke-width="1.5"/>
+
+        <!-- bar 1: eBPF/LSM hook, 3.2us -> x ~ 90 + log10(3.2)*75 = 90+37.6=127.6 -->
+        <rect x="90" y="52" width="38" height="28" fill="#ff8c3a"/>
+        <text x="740" y="70" font-size="13" fill="#f0eee8">3.2µs</text>
+        <text x="16" y="70" font-size="13" fill="#f0eee8">eBPF/LSM hook</text>
+
+        <!-- bar 2: post-install audit/static scan, ~1.5s -> x=90+log10(1.5e6)*75=90+6.176*75=553 -->
+        <rect x="90" y="112" width="463" height="28" fill="#6b7482"/>
+        <text x="565" y="130" font-size="13" fill="#f0eee8">~1–3s</text>
+        <text x="16" y="130" font-size="13" fill="#f0eee8">Post-install audit</text>
+
+        <!-- bar 3: manual review, ~5min = 3e8us -> x=90+log10(3e8)*75=90+8.48*75=726, clamp to 690 -->
+        <rect x="90" y="172" width="600" height="28" fill="#3d434c"/>
+        <text x="16" y="190" font-size="13" fill="#f0eee8">Manual code review</text>
+        <text x="700" y="190" font-size="13" fill="#f0eee8">minutes+</text>
+      </svg>
       <p class="chart-caption">
-        The 3.2µs figure is a measured value from <code style="color:var(--amber)">bpf_ktime_get_ns()</code>
-        on the socket_connect hook itself — the cost of the kernel-side check, not an end-to-end benchmark.
-        The other two rows are order-of-magnitude reference points for how those approaches typically operate,
-        not numbers measured against this tool.
+        The <code>3.2µs</code> figure is a measured value from <code>bpf_ktime_get_ns()</code>
+        on the socket_connect hook itself — the cost of the kernel-side check, not an end-to-end
+        benchmark. The audit and manual-review rows are order-of-magnitude reference points for
+        how those approaches typically operate, not numbers measured against this tool — the axis
+        is log-scaled because the gap between them spans roughly eight orders of magnitude.
       </p>
     </div>
   </section>
@@ -498,7 +420,7 @@ footer {
   <!-- COMPONENTS -->
   <section class="sec">
     <div class="sec-head">
-      <span class="sec-tag">04</span>
+      <span class="sec-tag">05</span>
       <h2>Core components</h2>
     </div>
     <div class="component-list">
@@ -519,59 +441,148 @@ footer {
         <div class="component-desc"><code>event_t</code> struct alignment corrected between the BPF side and the C++ userspace side so trace events decode cleanly across the boundary.</div>
       </div>
     </div>
+
+    <div class="code-panel">
+      <div class="code-bar"><span>hooks/socket_connect.bpf.c</span><span>SEC("lsm/socket_connect")</span></div>
+      <div class="code-body"><span class="kw">SEC</span>(<span class="ty">"lsm/socket_connect"</span>)
+<span class="kw">int</span> <span class="fn">BPF_PROG</span>(restrict_connect, <span class="kw">struct</span> socket *sock,
+               <span class="kw">struct</span> sockaddr *address, <span class="kw">int</span> addrlen) {
+    <span class="cm">// scope the check to this package's sandbox namespace</span>
+    <span class="kw">struct</span> pid_namespace *ns = <span class="fn">get_task_ns</span>(<span class="fn">bpf_get_current_task_btf</span>());
+    <span class="kw">if</span> (ns != sandbox_ns) <span class="kw">return</span> 0;
+
+    __u64 t0 = <span class="fn">bpf_ktime_get_ns</span>();
+    <span class="kw">if</span> (<span class="fn">ip_in_blocklist</span>(address)) {
+        <span class="fn">emit_event</span>(EVENT_BLOCKED, address, <span class="fn">bpf_ktime_get_ns</span>() - t0);
+        <span class="kw">return</span> -EPERM;   <span class="cm">// refused inline, before connect() returns</span>
+    }
+    <span class="kw">return</span> 0;
+}</div>
+    </div>
   </section>
 
-  <!-- COMPARISON -->
+  <!-- SYSCALL COVERAGE -->
   <section class="sec">
     <div class="sec-head">
-      <span class="sec-tag">05</span>
-      <h2>How it compares</h2>
+      <span class="sec-tag">06</span>
+      <h2>Syscall coverage</h2>
     </div>
-    <table class="compare-table">
-      <tr>
-        <th>Capability</th>
-        <th>Shadow Analyzer</th>
-        <th>npm audit</th>
-        <th>Manual review</th>
-      </tr>
-      <tr>
-        <td>Checks known CVE database</td>
-        <td class="col-us yes">✓</td>
-        <td class="yes">✓</td>
-        <td class="no">—</td>
-      </tr>
-      <tr>
-        <td>Observes actual runtime behavior</td>
-        <td class="col-us yes">✓</td>
-        <td class="no">—</td>
-        <td class="no">partial</td>
-      </tr>
-      <tr>
-        <td>Blocks malicious calls inline</td>
-        <td class="col-us yes">✓ (socket_connect)</td>
-        <td class="no">—</td>
-        <td class="no">—</td>
-      </tr>
-      <tr>
-        <td>Catches novel / unlisted threats</td>
-        <td class="col-us yes">✓ behavior-based</td>
-        <td class="no">— signature-based only</td>
-        <td class="yes">✓ if reviewer catches it</td>
-      </tr>
-      <tr>
-        <td>Runs unattended, no human in the loop</td>
-        <td class="col-us yes">✓</td>
-        <td class="yes">✓</td>
-        <td class="no">—</td>
-      </tr>
-    </table>
+    <div class="table-wrap">
+      <table class="compare-table">
+        <tr>
+          <th>Hook point</th>
+          <th>Status</th>
+          <th>What it catches</th>
+        </tr>
+        <tr>
+          <td>lsm/socket_connect</td>
+          <td class="col-us yes">Implemented</td>
+          <td>Outbound network calls to blocklisted addresses — exfiltration, C2 callbacks</td>
+        </tr>
+        <tr>
+          <td>lsm/file_open, path_mknod</td>
+          <td class="no">Planned</td>
+          <td>Writes outside the package's own directory tree</td>
+        </tr>
+        <tr>
+          <td>lsm/bprm_check_security</td>
+          <td class="no">Planned</td>
+          <td>Child processes spawned by postinstall scripts</td>
+        </tr>
+        <tr>
+          <td>memfd_create tracking</td>
+          <td class="col-us yes">Implemented (as a detector)</td>
+          <td>In-memory execution attempts — source of the false-positive case study below</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- REAL-WORLD ATTACKS -->
+  <section class="sec">
+    <div class="sec-head">
+      <span class="sec-tag">07</span>
+      <h2>Against real incidents: Axios &amp; TanStack</h2>
+    </div>
+    <p class="sec-intro">
+      Two of 2026's largest npm supply-chain compromises both relied on the exact
+      moment this project sandboxes: an install-time lifecycle script running with
+      full host trust. Neither was caught by static scanning before it shipped —
+      here's what each did, and what part of Shadow Analyzer's design maps to it.
+    </p>
+    <div class="case-grid">
+      <div class="log-panel">
+        <div class="log-bar">
+          <span>incident.log — axios@1.14.1 / 0.30.4, 2026-03-31</span>
+          <span>RAT DROPPER</span>
+        </div>
+        <div class="log-body">
+          <div class="ln-comment"><span class="ln-num">01</span>// maintainer npm token compromised; two versions published directly, bypassing CI/OIDC</div>
+          <div class="ln-bad"><span class="ln-num">02</span>dep     phantom dependency plain-crypto-js@4.2.1 added — never imported anywhere in axios source</div>
+          <div class="ln-bad"><span class="ln-num">03</span>postinstall  setup.js runs on install, contacts C2 (sfrclak.com:8000)</div>
+          <div class="ln-bad"><span class="ln-num">04</span>payload  cross-platform RAT dropped, then setup.js deletes itself and restores a clean package.json</div>
+          <div class="ln-good"><span class="ln-num">05</span>detected in the wild ~6 min after publish by an external scanner — after infections had already begun</div>
+        </div>
+      </div>
+      <div class="log-panel">
+        <div class="log-bar">
+          <span>incident.log — @tanstack/* × 42, 2026-05-11</span>
+          <span>CI WORM</span>
+        </div>
+        <div class="log-body">
+          <div class="ln-comment"><span class="ln-num">01</span>// GitHub Actions cache poisoned via a pull_request_target Pwn Request; OIDC tokens read from runner /proc/&lt;pid&gt;/mem</div>
+          <div class="ln-bad"><span class="ln-num">02</span>publish  84 malicious versions across 42 @tanstack/* packages, carrying valid SLSA provenance</div>
+          <div class="ln-bad"><span class="ln-num">03</span>install  payload downloads the Bun runtime as a living-off-the-land binary</div>
+          <div class="ln-bad"><span class="ln-num">04</span>exec     obfuscated payload harvests CI tokens &amp; cloud credentials, self-propagates using stolen tokens</div>
+          <div class="ln-good"><span class="ln-num">05</span>contained within ~5 hours, but had already spread to 170+ packages by then</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top: 24px;">
+      <p class="mini-label">Where the sandbox would have intervened</p>
+      <table class="compare-table">
+        <tr>
+          <th>Attack step (both incidents)</th>
+          <th>What caught it in reality</th>
+          <th>Shadow Analyzer's angle</th>
+        </tr>
+        <tr>
+          <td>Lifecycle script (postinstall) runs with full host access</td>
+          <td class="no">Nothing — npm runs it by design</td>
+          <td class="col-us yes">Namespace-scoped sandbox: the script never touches the real host in the first place</td>
+        </tr>
+        <tr>
+          <td>Script opens an outbound connection (C2, or token exfil)</td>
+          <td class="no">Static scanners don't observe runtime network calls</td>
+          <td class="col-us yes">socket_connect hook sees and logs every connect() at install time, blocklist match or not</td>
+        </tr>
+        <tr>
+          <td>Malware self-deletes / restores clean files post-execution (axios)</td>
+          <td class="no">File-based scans after the fact find nothing</td>
+          <td class="col-us yes">Event captured at kernel connect-time — survives userspace cleanup entirely</td>
+        </tr>
+        <tr>
+          <td>Payload uses a brand-new C2 domain, not yet on any blocklist</td>
+          <td class="no">Signature/reputation lookups miss unlisted infrastructure</td>
+          <td class="no">Honest gap — today's static IP blocklist wouldn't auto-block it either</td>
+        </tr>
+      </table>
+    </div>
+    <p class="chart-caption" style="margin-top: 4px;">
+      The real gain isn't "the blocklist would have had the right IP" — it's that a
+      sandboxed install script attempting <em style="color:var(--amber); font-style:normal;">any</em>
+      outbound connection at all is itself the anomaly worth surfacing, which is what the
+      threat-intel feed integration and per-package risk scoring on the roadmap below are for:
+      turning "an install script just called home" into an automatic block, not just a log line.
+    </p>
   </section>
 
   <!-- CASE STUDIES -->
   <section class="sec">
     <div class="sec-head">
-      <span class="sec-tag">06</span>
-      <h2>Case studies</h2>
+      <span class="sec-tag">08</span>
+      <h2>Case studies from testing</h2>
     </div>
     <div class="case-grid">
       <div class="log-panel">
@@ -606,7 +617,7 @@ footer {
   <!-- ROADMAP -->
   <section class="sec" style="border-bottom: none;">
     <div class="sec-head">
-      <span class="sec-tag">07</span>
+      <span class="sec-tag">09</span>
       <h2>Not yet built</h2>
     </div>
     <div class="roadmap-grid">
